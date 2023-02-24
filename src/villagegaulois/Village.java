@@ -53,15 +53,11 @@ public class Village {
 		}	
 		
 		private  Etal touverVendeur(Gaulois gaulois) {
-			int i = 0;
-			while(etals[i].getVendeur() != gaulois) {
-				i++;
-			}
-			if (i>=nbrEtal){
-				return null;
-			}
-			Etal etalTrouver = etals[i];
-			return  etalTrouver;
+			for(int i = 0 ;i<nbrEtal ; i++)
+				if (etals[i].getVendeur() == gaulois){
+					return etals[i];
+				}
+			return  null;
 		}
 		
 		private  String afficherMarche() {
@@ -108,17 +104,21 @@ public class Village {
 		return null;
 	}
 
-	public String afficherVillageois() {
+	public String afficherVillageois() throws VillageSansChefException {
+		if (chef == null){
+			throw new VillageSansChefException("village sans chef");
+		}
 		StringBuilder chaine = new StringBuilder();
 		if (nbVillageois < 1) {
 			chaine.append("Il n'y a encore aucun habitant au village du chef "
 					+ chef.getNom() + ".\n");
 		} else {
-			chaine.append("Au village du chef " + chef.getNom()
+				chaine.append("Au village du chef " + chef.getNom()
 					+ " vivent les légendaires gaulois :\n");
+				chaine.append("le village n'a pas de chef");
 			for (int i = 0; i < nbVillageois; i++) {
 				chaine.append("- " + villageois[i].getNom() + "\n");
-			}
+				}
 		}
 		return chaine.toString();
 	}
