@@ -43,17 +43,23 @@ public class Scenario {
 			System.out.println(etalFleur.acheterProduit(10, abraracourcix));
 		} catch (IllegalArgumentException e) {
 			System.out.println("La quantiter acherter doit etre superieur a 1");
-		}
+		} catch(IllegalStateException e){
+            System.out.println("L'etal doit etre occuper\n");
+        }
 		try {
 			System.out.println(etalFleur.acheterProduit(15, obelix));
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			System.out.println("La quantiter acherter doit etre superieur a 1");
-		}
+		} catch(IllegalStateException e){
+            System.out.println("L'etal doit etre occuper\n");
+        }
 		try {
 			System.out.println(etalFleur.acheterProduit(15, assurancetourix));
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			System.out.println("La quantiter acheter doit etre superieur a 1");
-		}
+		}catch(IllegalStateException e){
+            System.out.println("L'etal doit etre occuper\n");
+        }
 
 		System.out.println(village.partirVendeur(bonemine));
 		System.out.println(village.afficherMarche());
